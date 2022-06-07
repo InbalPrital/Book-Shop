@@ -7,10 +7,6 @@ var gTrans = {
     en: 'Book Filter',
     he: 'סינון ספרים',
   },
-  all: {
-    en: 'All',
-    he: 'הכל',
-  },
   maxPrice: {
     en: 'Max Price',
     he: 'מחיר מקסימלי',

@@ -5,7 +5,10 @@ var gCurrBook
 var gFilterBy = { maxPrice: -Infinity, minRate: 0 }
 
 function getBooksForDisplay() {
-  return gBooks
+  var books = gBooks.filter(
+    (book) => book.price <= gFilterBy.maxPrice && book.rate >= gFilterBy.minRate
+  )
+  return books
 }
 
 function _createBooks() {
@@ -66,17 +69,7 @@ function increseRate() {
 }
 
 function setBookFilter(filterBy = {}) {
-  if (filterBy.vendor !== undefined) gFilterBy.vendor = filterBy.vendor
-  if (filterBy.minSpeed !== undefined) gFilterBy.minSpeed = filterBy.minSpeed
+  if (filterBy.maxPrice !== undefined) gFilterBy.maxPrice = filterBy.MaxPrice
+  if (filterBy.minRate !== undefined) gFilterBy.minRate = filterBy.minRate
   return gFilterBy
-}
-
-function setBookSort(sortBy = {}) {
-  if (sortBy.maxPrice !== undefined) {
-    gBooks.sort((c1, c2) => (c1.maxPrice - c2.maxPrice) * sortBy.maxPrice)
-  } else if (sortBy.minRate !== undefined) {
-    gBooks.sort(
-      (c1, c2) => c1.minRate.localeCompare(c2.minRate) * sortBy.minRate
-    )
-  }
 }
